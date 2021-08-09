@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>无重复字符的最长字串</title>
+  </head>
+  <body>
+    <script>
+      function lengthOfLongestSubstring(s) {
+        const len = s.length
+        const boxSet = new Set()
+        let rk = -1,
+          ret = 0
+
+        for (let i = 0; i < len; i++) {
+          if (i !== 0) {
+            boxSet.delete(s.charAt(i - 1))
+          }
+
+          while (rk + 1 < len && !boxSet.has(s.charAt(rk + 1))) {
+            boxSet.add(s.charAt(rk + 1))
+            ++rk
+          }
+
+          ret = Math.max(ret, rk - i + 1)
+        }
+
+        return ret
+      }
+
+      lengthOfLongestSubstring('bbbbb')
+    </script>
+  </body>
+</html>
