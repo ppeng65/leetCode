@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寻找两个正序数组的中位数</title>
+</head>
+<body>
+  <script>
+    const nums1 = [1, 2]
+    const nums2 = [3, 4]
+    const findMedianSortedArrays = (nums1, nums2) => {
+      const nums = nums1.concat(nums2).sort((a, b) => a - b)
+      const len = nums.length
+      let ret = ''
+      const index = len / 2
+      if (len % 2 === 0) {
+        ret = (nums[index] + nums[index - 1]) / 2;
+      } else {
+        ret = nums[Math.floor(index)];
+      }
+
+      return ret
+    }
+
+    findMedianSortedArrays(nums1, nums2)
+  </script>
+</body>
+</html>
